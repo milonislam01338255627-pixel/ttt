@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>টেস্ট সাইট</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:480px;margin:0 auto;padding:20px;text-align:center}
+button{font-size:18px;padding:14px 20px;border:0;border-radius:10px;background:#4f46e5;color:#fff;width:100%}
+#msg{margin-top:16px;font-size:16px}
+</style>
+<script src="https://push-2-no3e.onrender.com/sdk.js" data-app-id="76fcafa3d76a2ffa"></script>
+</head><body>
+<h2>🔔 টেস্ট সাইট</h2>
+<p>নিচের বাটনে চাপুন, তারপর "Allow" দিন।</p>
+<button id="b">নোটিফিকেশন চালু করুন</button>
+<div id="msg"></div>
+<script>
+document.getElementById("b").onclick = async function () {
+  var m = document.getElementById("msg");
+  m.textContent = "অপেক্ষা করুন... (প্রথমবার ১ মিনিট লাগতে পারে)";
+  try { await PushSaaS.subscribe(); m.textContent = "✅ চালু হয়েছে! এবার ড্যাশবোর্ড থেকে টেস্ট পাঠান।"; }
+  catch (e) { m.textContent = "❌ " + e.message; }
+};
+</script></body></html>
